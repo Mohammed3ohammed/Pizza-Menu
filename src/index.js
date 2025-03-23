@@ -61,9 +61,10 @@ function App() {
 }
 
 function Header(){
+     const style = {};
     return(
         <header className='header footer'>
-        <h1>Fast React Pizza</h1>
+        <h1 style={style}>Fast React Pizza Co.</h1>
         </header>
     )
 }
@@ -98,8 +99,8 @@ function Menu(){
 };
 
 function Pizza({pizzaObj}) {
-
 console.log(pizzaObj);
+
     return(
         <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}> 
             <img src={pizzaObj.photoName} alt={pizzaObj.name}/>
@@ -112,24 +113,24 @@ console.log(pizzaObj);
     )
 }
 
-function Footer(){
-    const hour = new Date().getHours();
-    const openHour = 12;
-    const closeHour = 22;
-    const isOpen = hour >= openHour && hour <= closeHour;
-    console.log(isOpen);
+    function Footer(){
+        const hour = new Date().getHours();
+        const openHour = 12;
+        const closeHour = 22;
+        const isOpen = hour >= openHour && hour <= closeHour;
+        console.log(isOpen);
 
-    return (
-        <footer className='footer'>
-        {isOpen ?  ( 
-            <Order  closeHour={closeHour} openHour={openHour} />
+        return (
+            <footer className='footer'>
+            {isOpen ?  ( 
+                <Order  closeHour={closeHour} openHour={openHour} />
 
-        ) : (
-            <p>We'r happy to welcome you between {closeHour}: 00 and {closeHour}:00 </p>
-         )}
-         </footer>
-    )
-}
+            ) : (
+                <p>We'r happy to welcome you between {closeHour}: 00 and {closeHour}:00 </p>
+            )}
+            </footer>
+        )
+    }
 
     function Order({closeHour, openHour}) {
         return (
